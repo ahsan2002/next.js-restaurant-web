@@ -27,8 +27,8 @@ const Navbar = () => {
             <Image src={'/phone.png'} alt='phone' width={20} height={20}/>
             <span>123 456 789</span>
           </div>
-        {!user ?<Link href={''}>Login</Link>:
-        <Link href={''}>Orders</Link>}
+        {!user ?<Link href={'/login'}>Login</Link>:
+        <Link href={'/orders'}>Orders</Link>}
        <CartIcon/>
       </div>
 
