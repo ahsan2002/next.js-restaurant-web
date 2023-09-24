@@ -10,7 +10,7 @@ export const GET = async (req: NextRequest) => {
   if (session) {
     try {
       if (session.user.isAdmin) {
-        const orders = prisma.order.findMany();
+        const orders = await prisma.order.findMany();
         return new NextResponse(JSON.stringify(orders), { status: 200 });
       }
       const orders = await prisma.order.findMany({
@@ -26,7 +26,8 @@ export const GET = async (req: NextRequest) => {
         { status: 500 }
       );
     }
-  } else {
+  } 
+  else {
     return new NextResponse(
       JSON.stringify({ message: "You are not authenticated" }),
       { status: 401 }
@@ -34,7 +35,3 @@ export const GET = async (req: NextRequest) => {
     return;
   }
 };
-
-// export const POST = ()=>{
-//         return new NextResponse("Hello",{status:200})
-// }
